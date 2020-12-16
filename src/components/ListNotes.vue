@@ -1,8 +1,8 @@
 <template>
     <div class="list-notes">
         <ul>
-            <li v-for="(row, index) in propNotes" :key="index">
-                <button class="btn-note" @click="idNote(row.id)">
+            <li v-for="(row, index) in notes" :key="index">
+                <button class="btn-note" @click="editNote(row.id)">
                     <label>{{row.title}}</label>
                     <span>{{row.description}}</span>
                 </button>
@@ -17,20 +17,25 @@ export default {
     name: 'ListNotes',
     data: () => {
         return {
-            
+            notes: [
+                {
+                    id: 1,
+                    title: 'wegodev',
+                    description: 'wegodev note'
+                }
+            ]
         }
     },
     props:{
-        propNotes: {
-            type: Array
-        },
         propEditNotes: {
             type: Function
         }
     },
     methods:{
-        idNote(id){
-            this.propEditNotes(id)
+        editNote(id){
+            let dataForm = this.notes.find(dataNote => dataNote.id === id)
+
+            this.$root.$emit('emitForm', dataForm)
         }
     }
 }
