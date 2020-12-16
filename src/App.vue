@@ -15,7 +15,7 @@
     </div>
     <div class="right-section">
       <!-- form -->
-      <FormNotes :propSaveNote="saveNote" :propUpdateNote="updateNote" :propRemoveNote="removeNote" />
+      <FormNotes :propSaveNote="saveNote" :propUpdateNote="updateNote" />
     </div>
   </div>
 </template>
@@ -62,10 +62,6 @@ export default {
       let noteIndex = this.notes.findIndex(dataNote => dataNote.id === id)
       this.note[noteIndex].title = title
       this.note[noteIndex].description = description
-    },
-    removeNote(id){
-      let noteIndex = this.notes.findIndex(dataNote => dataNote.id === id)
-      this.notes.splice(noteIndex, 1)
     }
   }
 }
