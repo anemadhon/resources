@@ -43,6 +43,11 @@ export default {
             let noteIndex = this.notes.findIndex(dataNote => dataNote.id === data.id)
             this.notes.splice(noteIndex, 1)
         })
+        this.$root.$on('emitUpdateNote', data => {
+            let noteIndex = this.notes.findIndex(dataNote => dataNote.id === data.id)
+            this.note[noteIndex].title = data.title
+            this.note[noteIndex].description = data.description
+        })
     }
 }
 </script>

@@ -10,12 +10,12 @@
       <button @click="newNote" class="bg-success btn btn-new-note">+ Note Baru</button>
       <div class="list-of-notes-and-btn-new">
         <!-- list -->
-        <ListNotes :propEditNotes="editNote" />
+        <ListNotes />
       </div>
     </div>
     <div class="right-section">
       <!-- form -->
-      <FormNotes :propSaveNote="saveNote" :propUpdateNote="updateNote" />
+      <FormNotes :propSaveNote="saveNote" />
     </div>
   </div>
 </template>
@@ -57,11 +57,6 @@ export default {
 
       this.notes.push(note)
       this.editNote(newId)
-    },
-    updateNote(id, title, description){
-      let noteIndex = this.notes.findIndex(dataNote => dataNote.id === id)
-      this.note[noteIndex].title = title
-      this.note[noteIndex].description = description
     }
   }
 }
