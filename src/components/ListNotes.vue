@@ -34,7 +34,7 @@ export default {
     methods:{
         editNote(id){
             let dataForm = this.notes.find(dataNote => dataNote.id === id)
-
+            dataForm.mode = 'update'
             this.$root.$emit('emitForm', dataForm)
         },
         createNewId(){

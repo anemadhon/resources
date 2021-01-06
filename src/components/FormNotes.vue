@@ -1,9 +1,10 @@
 <template>
     <div class="form-notes">
-        <form @submit="submitNote">
+        <form>
             <div class="menu-header">
                 <button type="button" @click="submitRemove" class="bg-danger btn btn-delete-note">Hapus</button>
-                <button type="submit" class="bg-success btn">Simpan</button>
+                <button type="button" @click="submitSave" class="bg-success btn" v-if="mode == 'save'">Simpan</button>
+                <button type="button" @click="submitUpdate" class="bg-success btn" v-if="mode == 'update'">Ubah</button>
             </div>
             <div class="form-content">
                 <input type="hidden" v-model="id">
@@ -21,22 +22,25 @@ export default {
         return {
             id: 0,
             title: '',
-            description: ''
+            description: '',
+            mode: 'save'
         }
     },
     methods:{
-        submitNote(e){
-            e.preventDefault()
+        submitNote(){
             let data = {
                 title: this.title,
                 description: this.description
             }
-            if(this.id === 0) {
-                this.$root.$emit('emitSaveNote', data)
-            } else {
-                data.id = this.id
-                this.$root.$emit('emitUpdateNote', data)
+            this.$root.$emit('emitSaveNote', data)
+        },
+        submitUpdate(){
+            let data = {
+                id: this.id,
+                title: this.title,
+                description: this.description
             }
+            this.$root.$emit('emitUpdateNote', data)
         },
         submitRemove(){
             let data = {id:this.id}
@@ -54,6 +58,7 @@ export default {
             this.id = data.id
             this.title = data.title
             this.description = data.description
+            this.mode = data.mode
         })
     }
 }
