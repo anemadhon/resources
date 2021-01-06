@@ -4,7 +4,7 @@
             <div class="menu-header">
                 <button type="button" @click="submitRemove" class="bg-danger btn btn-delete-note">Hapus</button>
                 <button type="button" @click="submitSave" class="bg-success btn" v-if="mode == 'save'">Simpan</button>
-                <button type="button" @click="submitUpdate"class="bg-success btn" v-if="mode == 'update'">Ubah</button>
+                <button type="button" @click="submitUpdate" class="bg-success btn" v-if="mode == 'update'">Ubah</button>
             </div>
             <div class="form-content">
                 <input type="hidden" v-model="id">
