@@ -47,7 +47,8 @@ export default {
       this.dataForm = {
         id: 0,
         title: '',
-        description: ''
+        description: '',
+        mode: 'save'
       }
     },
     saveNote(title, description){
@@ -69,6 +70,7 @@ export default {
     },
     editNote(id){
       this.dataForm = this.notes.find(dataNote => dataNote.id === id)
+      this.dataForm.mode = 'update'
     },
     updateNote(id, title, description){
       let noteIndex = this.notes.findIndex(dataNote => dataNote.id === id)
