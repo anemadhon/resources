@@ -27,10 +27,11 @@ export default {
         }
     },
     methods:{
-        submitNote(){
+        submitSave(){
             let data = {
                 title: this.title,
-                description: this.description
+                description: this.description,
+                mode: this.mode
             }
             this.$root.$emit('emitSaveNote', data)
         },
